@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="true">
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Source Insight 4.0 破解和使用">
+<meta name="keywords" content="C++,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Source Insight 4.0 破解和使用">
+<meta property="og:url" content="http://www.jasonwang.com.cn/2019/10/21/SouceInsight4/index.html">
+<meta property="og:site_name" content="Jason Wang&#39;s blog">
+<meta property="og:description" content="Source Insight 4.0 破解和使用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_1.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_2.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_3.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_4.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_5.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_6.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_7.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_8.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_10.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_11.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_12.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_13.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_14.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_16.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_17.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_18.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_19.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_20.png">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_21.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_30.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_31.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_32.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_33.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_34.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_35.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_36.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_37.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_38.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_39.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_40.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_41.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_42.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_43.jpg">
+<meta property="og:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_44.jpg">
+<meta property="og:updated_time" content="2019-11-18T14:15:37.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Source Insight 4.0 破解和使用">
+<meta name="twitter:description" content="Source Insight 4.0 破解和使用">
+<meta name="twitter:image" content="https://img-blog.nos-eastchina1.126.net/blog/blog_source_1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Jason Wang's blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://www.jasonwang.com.cn/2019/10/21/SouceInsight4/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Source Insight 4.0 破解和使用 | Jason Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jason Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">唯有梦想不可辜负</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">10</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">7</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-links">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-link"></i> <br>友链</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>站点地图</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.jasonwang.com.cn/2019/10/21/SouceInsight4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://s2.ax1x.com/2019/09/07/n1Qczd.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Source Insight 4.0 破解和使用
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-21 21:44:45" itemprop="dateCreated datePublished" datetime="2019-10-21T21:44:45+08:00">2019-10-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-18 22:15:37" itemprop="dateModified" datetime="2019-11-18T22:15:37+08:00">2019-11-18</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/10/21/SouceInsight4/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/10/21/SouceInsight4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/10/21/SouceInsight4/" class="leancloud_visitors" data-flag-title="Source Insight 4.0 破解和使用">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">热度：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+              <span>℃</span>
+            </span>
+          
+
+          
+          
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>9.4k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>17 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Source Insight 4.0 破解和使用</p>
+<a id="more"></a>
+<p>转自博客：<a href="https://blog.csdn.net/xiaoxu2050/article/details/82752799" target="_blank" rel="noopener">https://blog.csdn.net/xiaoxu2050/article/details/82752799</a></p>
+<h2 id="Source-Insight-4-0-破解安装"><a href="#Source-Insight-4-0-破解安装" class="headerlink" title="Source Insight 4.0 破解安装"></a>Source Insight 4.0 破解安装</h2><p>第一步：安装    安装sourceinsight4.0 （可从下文地址下载）<br>第二步：替换     用下文地址中的 sourceinsight4.0.exe 替换安装后路径下的 sourceinsight4.0.exe<br>第三步：破解     运行sourceinsight4.0，选择破解文件破解</p>
+<p>安装：如果需要全部重新安装，请下载  完全安装包+破解exe+lisence 压缩包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://pan.baidu.com/s/1eSZtsbw            密码: 3kjj</span><br><span class="line">解压密码: biu</span><br></pre></td></tr></table></figure>
+
+<p>下载解压后先找到安装文件进行安装，然后用解压后的“source insight 4.0.exe”替换安装路径下的source insight 4.0.exe，然后运行SI4，在弹出的对话框中选择第三项并将下载的文件 si4.pediy.lic选中并“Next”即可破解！</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_1.png" alt></p>
+<h2 id="安装卸载附录："><a href="#安装卸载附录：" class="headerlink" title="安装卸载附录："></a>安装卸载附录：</h2><p>如果安装或者安装后提示有问题，请进行完全卸载后，再重装一遍即可。<br>完全卸载方式：</p>
+<h3 id="1、清除注册表信息："><a href="#1、清除注册表信息：" class="headerlink" title="1、清除注册表信息："></a>1、清除注册表信息：</h3><p>“win ”+ R  或者  “开始” -&gt; “运行”，输入“regedit”，回车；<br>在弹出的注册表管理器中，选择“编辑”-&gt; “查找”-&gt;“source insight”，或按照下述路径展开：HKEY_CURRENT_USER -&gt; software -&gt; Source Dynamics -&gt; Source Insight;<br>将该项下面的source insight 需要清除的对应版本项目选中，右键“删除“。</p>
+<h3 id="2、删除全局配置信息："><a href="#2、删除全局配置信息：" class="headerlink" title="2、删除全局配置信息："></a>2、删除全局配置信息：</h3><p>在 ./user/document/source insight 3.0/4.0 下的所有文件及该文件夹<br> 注意此处的路径可能不同  也可能是:“库”-&gt;“用户”(也可能是你的名字) -&gt; 文档 -&gt; source insight3.0/4.0<br> 或者  你上次安装的时候所指定的其他位置<br>Source Insight4.0软件打开C程序中文注释乱码的解决方法<br>更改Options—Preference—Files中最下面的Default encoding中程序默认的UTF-8改为System Default（windows ANSI）。<br>附录：source insight 安装序列号（如果以上没用）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SI3US-751793-52670</span><br><span class="line">SI3US-205035-36448</span><br><span class="line">SI3US-466908-65897</span><br><span class="line">SI3US-368932-59383</span><br><span class="line">SI3US-065458-30661</span><br><span class="line">SI3US-759512-70207</span><br></pre></td></tr></table></figure>
+
+<p>SourceInsight4.0的使用<br>创建一个SI工程管理代码<br>整体思路：告诉SI要解析哪些文件 -&gt; 告诉SI这些文件在哪 -&gt; 告诉SI文件选好了，解析它吧 。<br>首先，这里演示的是C代码工程，其它编程语言也差不多。<br>在解析C代码工程时，你可能希望SI连 .CC 和 .S结尾的文件也一同解析。那么点击 option -&gt; File Type Options -&gt; C/C++ Source File，我们在右边添加 <em>.S;</em>.cc。这里 *号是通配符，用英文;号隔开。<br>代码类型设置</p>
+<h3 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h3><p>选择我们的代码工程位置，比如我选择了 D:\linux-to-windows-share\target 这个目录，我的工程代码全在这个目录下（注意不是SI的工程目录），然后点击 OK 继续。</p>
+<h3 id="导入项目"><a href="#导入项目" class="headerlink" title="导入项目"></a>导入项目</h3><p>点击Project-&gt;New Project。</p>
+<p>点击Browse，选择你的源代码所在目录。</p>
+<p>给新建的Source Insight工程取个名字，然后点击OK。</p>
+<p>弹出窗口点击OK，然后点击Add Tree，添加目录结构下所有文件到工程。最后点击Close，项目就建立完成。</p>
+<p>SynchronizeFile，双击Project Files窗口中的文件，即可打开文件，进行阅读或编辑。</p>
+<h3 id="新建一个项目"><a href="#新建一个项目" class="headerlink" title="新建一个项目"></a>新建一个项目</h3><p>快捷键Alt+Shift+N可以打开新建项目对话框，然后根据提示填好项目存储位置，源文件位置等，然后会出现添加删除项目文件对话框，选中自己想要编辑和浏览的文件添加即可，这样就建好了一个项目。</p>
+<h3 id="添加和删除项目文件"><a href="#添加和删除项目文件" class="headerlink" title="添加和删除项目文件"></a>添加和删除项目文件</h3><p>（1）在添加删除文件前，可以先设置文件过滤器，菜单栏-选项-文档选项，就可以看到文件过滤器了，怎么设置应该是一目了然的。</p>
+<p>（2）菜单栏-项目-添加或删除文件，即可打开添加和删除项目文件对话框。</p>
+<h3 id="同步文件-SynchronizeFile"><a href="#同步文件-SynchronizeFile" class="headerlink" title="同步文件 SynchronizeFile"></a>同步文件 SynchronizeFile</h3><p>快捷键Alt+Shift+S可以同步文件，同步文件后就可以自动找到源代码之间的依赖关系了（如：可以自动找到调用某个函数或变量的位置）</p>
+<h3 id="项目报告"><a href="#项目报告" class="headerlink" title="项目报告"></a>项目报告</h3><p>菜单栏-项目-项目报告，获取当前项目的文件个数，代码行数等。</p>
+<h3 id="重建项目"><a href="#重建项目" class="headerlink" title="重建项目"></a>重建项目</h3><p>菜单栏-项目-重建项目，重新同步代码依赖关系。<br>具体操作如下：<br>依次点击 Project -&gt; new project ，弹出对话框分别是SI的 工程名字 和 工程目录，如：工程名QCA4020，目录名SI_Proj。</p>
+<h2 id="选择代码工程目录"><a href="#选择代码工程目录" class="headerlink" title="选择代码工程目录"></a>选择代码工程目录</h2><p>这一步，进一步确定你要添加哪些代码到你的SI工程中，如果你要添加 target 这个目录下的全部，就选中它，点击 Add Tree 就好。后面你要是增删文件，也在这里。添加好了，就点击 Close 吧。</p>
+<p>添加以后，解析它吧。这一步会把代码加到SI数据库中，使得后面查找、关联更快。解析过程有点慢，耐心等待吧。点击Project -&gt; SynchronizeFile， 并选择1，3，4打钩（勾上会强制添加和解析），点击 start 。</p>
+<h3 id="解析代码"><a href="#解析代码" class="headerlink" title="解析代码"></a>解析代码</h3><p>如果解析完了，你突然发现忘记添加某些文件了，或者本来不用添加的你却添加了。不要担心，点击 Project -&gt; Add and Remove Project Files，再次进行添加删除，然后 再进行解析SynchronizeFile 操作才会生效。</p>
+<h3 id="添加和删除解析文件"><a href="#添加和删除解析文件" class="headerlink" title="添加和删除解析文件"></a>添加和删除解析文件</h3><p>解析完，点一下那个书本一样的图标（Project Sympol List），尝试一下，你的代码就出来：</p>
+<h3 id="SourceInsight-的窗口设置"><a href="#SourceInsight-的窗口设置" class="headerlink" title="SourceInsight 的窗口设置"></a>SourceInsight 的窗口设置</h3><p>这里对SourceInsight进行一些设置，你完全可以不用设置，默认就好。</p>
+<p>选择主题：Option -&gt; Visual Theme （选择你喜欢的）。<br>设置字体大小：Option -&gt; Preference -&gt; Colors &amp; Fonts -&gt; Style -&gt; size 。</p>
+<p>显示文件全路径：Option -&gt; Preference -&gt; Display ， 去掉 trim long path names with ellipes。</p>
+<p>添加配置文件（别人配置好的）：Option -&gt; Load configuration（前提是你下载了别人的配置文件）。</p>
+<p>显示行号：view -&gt; Line Numbers 。</p>
+<h3 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h3><p>如果要 搜索字符位置，选中该字体，点击 工具栏的R图标 或者 Ctrl + F。</p>
+<p>在Project Window（默认右边）的对话框中输入文件名，可以搜索到文件。</p>
+<p> 没有正确显示在右边的file list列表框需要在View菜单下找到Panels级联菜单下的Project Windows，把它勾选上。</p>
+<h3 id="Source-Insight4-0软件打开C程序中文注释乱码的解决方法"><a href="#Source-Insight4-0软件打开C程序中文注释乱码的解决方法" class="headerlink" title="Source Insight4.0软件打开C程序中文注释乱码的解决方法"></a>Source Insight4.0软件打开C程序中文注释乱码的解决方法</h3><p>更改Options—Preference—Files中最下面的Default encoding中程序默认的UTF-8改为System Default（windows ANSI）。</p>
+<h3 id="高亮显示选中的单词"><a href="#高亮显示选中的单词" class="headerlink" title="高亮显示选中的单词"></a>高亮显示选中的单词</h3><p>高亮显示：F8。取消高亮：再按一次F8。<br>效果如下：</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_2.jpg" alt></p>
+<p>打开Source Insight相关窗口</p>
+<p>（1）打开Symbol Window。<br>View-&gt;Symbol Window。快捷键：Alt+F8。</p>
+<p>（2）打开Context Window。<br>View-&gt;Panels-&gt;Context Window。</p>
+<p>（3）打开Relation Window。<br>View-&gt;Panels-&gt;Relation Window<br>Source Insight窗口布局我一般设置如下：</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_3.jpg" alt></p>
+<h3 id="窗口字体大小与样式设置步骤："><a href="#窗口字体大小与样式设置步骤：" class="headerlink" title="窗口字体大小与样式设置步骤："></a>窗口字体大小与样式设置步骤：</h3><p>Preferences-&gt;Colors&amp;Fonts-&gt;Set Panel Fonts and Colors。</p>
+<p>这里设置只对上面窗口1：符号窗口（Symbol Window）和窗口4：项目文件夹浏览窗口（Project Folder Browser）有效，另外两个窗口无效。</p>
+<p>窗口2：上下文窗口（Context Window）字体大小设置如下：<br>在面板内右击-&gt;Context Window Options-&gt;scaling。</p>
+<p>窗口3：引用关系窗口（Relation Window）字体大小设置如下：</p>
+<p>窗口内右击-&gt;Relation Window Options-&gt;Font。<br>Source Insight的7种窗口的使用。</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_4.png" alt></p>
+<h3 id="1、文档窗口"><a href="#1、文档窗口" class="headerlink" title="1、文档窗口"></a>1、文档窗口</h3><p>（1）、修改窗口颜色属性：菜单栏-选项-参数-颜色标签，可以修改背景颜色、默认字体颜色、修改标记颜色等，如背景颜色改为护眼模式：R199 G237 B204。</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_5.png" alt></p>
+<p>（2）、Alt+Y打开文档类型选项窗口，修改字体显示大小、是否显示行号、解析语言选择、工程文件过滤、扩展tab键、是否显示符号窗口等。</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_6.png" alt><br>扩充1：Source Insight可以定义风格，菜单栏-选项-风格，即可以打开风格窗口，可以新建一个风格或修改一个风格。风格可以继承（和C++继承差不多）。</p>
+<p>扩充2：如何使用风格。当选中某种语言解析文档的时候，可以定义一些固定字符以不同的风格显示出来。菜单栏-选项-参数-语言标签，选中解析文档的语言，点击关键字按钮，打开语言关键字窗口，在样式这一栏选中一种风格，然后添加关键字即可。这样文档中这个关键字就以那种风格显示了。</p>
+<p>扩充3：如何查看和修改符号（如函数名、变量等）的风格，右击该符号，选择风格，打开窗口就可以看到该符号的风格是什么，然后进行修改。</p>
+<p>（3）、快速更名ctrl+’，选中某个函数名，然后按ctrl+’，弹出快速更名窗口，然后根据相应的选项，可以快速更换函数名。（包括函数的声明处，定义处，引用处等）。</p>
+<p>（4）、F8，高亮</p>
+<p>（5）、ctrl+左击，进入函数定义或变量声明处。</p>
+<p>（6）、Alt+，：后退</p>
+<p>（7）、Alt+.   ：前进</p>
+<p>（8）、ctrl+g：调到固定行</p>
+<p>（9）、Alt+左击拖动：可以进行列编辑</p>
+<p>（10）、自动缩进：Alt+T打开文档选项窗口，点击自动选项，选中第三个smart缩进，并把后面的两个勾都去掉，这样配置比较好。可以尝试一下勾上的效果，然后和不勾的效果对比一下。</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_7.png" alt><br>（11）、编码格式设置，设置完毕后需要重新打开文件进行浏览。</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_8.png" alt><br>（12）、Ctrl+F打开查找界面，配置好查找选项，然后关闭查找界面，选中一个单词，按一次Shift+F3，然后只要按F3和F4即可进行查找上一个和下一个。</p>
+<h3 id="2、符号窗口"><a href="#2、符号窗口" class="headerlink" title="2、符号窗口"></a>2、符号窗口</h3><p>这个窗口是显示文档的符号的，那么文档内容哪些是符号呢，这个应该是看文档窗口是设置哪种语言来解析文档的。</p>
+<p>（1）、Alt+F8：打开/关闭当前文档的符号窗口。</p>
+<p>（2）、Alt+Y打开文档选项窗口，配置所有文档是否打开符号窗口。</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_10.png" alt></p>
+<p>（3）、右击符号窗口-符号窗口选项-符号类型，可以选择显示的符号种类。</p>
+<p>（4）、右击符号窗口-符号窗口选项，可以修改字体、背景颜色等。</p>
+<h3 id="3、项目窗口"><a href="#3、项目窗口" class="headerlink" title="3、项目窗口"></a>3、项目窗口</h3><p>这个窗口可以使用各种模式来显示文件名、文件目录等。</p>
+<p>（1）、右击窗口选项，修改字体或背景颜色、不显示文件大小、目录、日期等。</p>
+<h3 id="4、关联窗口"><a href="#4、关联窗口" class="headerlink" title="4、关联窗口"></a>4、关联窗口</h3><p>这个窗口用来显示文档中的符号在哪些地方进行了引用。如哪些地方调用了函数，或该函数调用了哪些函数等。关联窗口可以有好多个。</p>
+<p>（1）、右击关联窗口-窗口属性，可以修改字体、背景颜色等。</p>
+<p>（2）、右击关联窗口-新建窗口，则可以打开一个新的关联窗口。</p>
+<p>（3）、关联窗口的功能修改，右击关联窗口-窗口属性，可以修改对应符号的关系类型，选择Reference，则该窗口显示调用该函数或变量的地方，选择calls，则该窗口显示该函数调用了哪些函数。</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_11.png" alt><br>（4）、如何使用该窗口：选中某个函数或变量，关联窗口会自动显示对于内容，如果不想它自己变，就锁上，然后需要找的时候刷新。（锁定、刷新按钮应该可以看到吧）</p>
+<h3 id="5、上下文窗口"><a href="#5、上下文窗口" class="headerlink" title="5、上下文窗口"></a>5、上下文窗口</h3><p>这个窗口一般配合关联窗口使用，单机关联窗口的某一项，可以自动在上下文窗口显示该项的上下文，双击上下文内容，则可以在文档窗口打开上下文。</p>
+<p>（1）、右击窗口-属性，修改字体、背景颜色等。</p>
+<h3 id="6、剪辑窗口"><a href="#6、剪辑窗口" class="headerlink" title="6、剪辑窗口"></a>6、剪辑窗口</h3><p>这个窗口的作用相当于是定义了好多粘贴板的意思。一个剪辑相当于一个粘贴板。</p>
+<p>（1）、右击窗口-属性，修改字体、背景颜色等。</p>
+<p>（2）、新建、修改、删除一个剪辑。</p>
+<p>（3）、如何使用新建的剪辑：菜单栏-编辑-粘贴自剪辑/拷贝到剪辑。</p>
+<h3 id="7、代码片段窗口"><a href="#7、代码片段窗口" class="headerlink" title="7、代码片段窗口"></a>7、代码片段窗口</h3><p>（1）、右击窗口-属性，修改字体、背景颜色等</p>
+<p>（2）、可以自定义一些代码片段，使用时直接插入即可。</p>
+<p>打开上下文窗口context window</p>
+<p>在view / panels/ context window</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_12.png" alt></p>
+<h2 id="三、自定义命令"><a href="#三、自定义命令" class="headerlink" title="三、自定义命令"></a>三、自定义命令</h2><p>菜单栏-选项-自定义命令，可以添加一条命令，定义该命令的名字、执行命令语句。</p>
+<p>如何运行命令：可以将命令显示在菜单栏（参考第五点菜单分配）或者给命令定义一个快捷键（参考第六点键分配）。</p>
+<p>望君举一反三。</p>
+<p>1、定义使用gvim打开当前文档的命令，前提是要先安装一个gvim程序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">命令名：editWithGvim</span><br><span class="line">执行命令：&quot;C:\Program Files\Vim\vim63\gvim.exe&quot; --remote-silent +%l %f</span><br></pre></td></tr></table></figure>
+
+<p>备注：–remote-silent 是如果已经打开了对应文件，就不会打开第二次，而是在已经打开的文件里跳转到对应行；%l 是当前行；%f是当前文件。</p>
+<p>2、在资源管理器中显示当前文档，即打开当前文档位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">命令名：explorer</span><br><span class="line">执行命令：explorer /select,%f</span><br><span class="line">备注：不知道，再说吧。</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、宏的使用"><a href="#四、宏的使用" class="headerlink" title="四、宏的使用"></a>四、宏的使用</h2><p>宏语言是SourceInsight定义的一种可编程语言。安装好一个SourceInsight后，打开SourceInsight，可以看到有一个base项目。打开base项目，可以看到有一个Utils.em文件，该文件就是宏语言文件，在里面可以自己写一些宏，也可以新建一个.em文件写宏，或者下载一个别人写好的.em文件如quiker.em(lushengwen写的，用的人比较多)。新建的.em或别人的.em文件要加载到base工程中（如何加载：菜单栏-项目-添加/删除文件）。</p>
+<p>如何调用宏：可以将宏显示在菜单栏（参考第五点菜单分配）或者给宏定义一个快捷键（参考第六点键分配）。</p>
+<p>1、宏语言语法<br>这个再说</p>
+<p>2、quiker.em的使用（从网络下载）<br>（1）、首先要把这个文件搞到手，然后将其加载到Base工程中，其次要定义一个快捷键调用quiker.em中的宏AutoExpand。quiker.em中写了那么多宏，为什么只调用AutoExpand宏就可以。因为调用AutoExpand宏后，AutoExpand会根据当前文本内容自动调用其他宏。一般情况下都用快捷键ctrl+enter调用AutoExpand宏。</p>
+<p>（2）、输入文本config，然后执行AutoExpand，根据提示完成语言、姓名配置。</p>
+<p>（3）、输入文本fu，然后执行AutoExpand，根据提示完成函数的注释。（在函数名的上一行执行）</p>
+<p>（4）、输入文本if，然后执行AutoExpand，可以自动完成语法。其他类似。</p>
+<p>（5）、输入文本file，然后执行AutoExpand，可以自动生成.c文件描述。</p>
+<p>（6）、输入文本hdn，然后执行AutoExpand，根据提示完成.h文件宏定义。</p>
+<p>（7）、在.c文件里输入hd，然后执行AutoExpand，可以自动生成.c文件对应的头文件。</p>
+<p>（8）、后续补充</p>
+<h3 id="3、自己写的宏"><a href="#3、自己写的宏" class="headerlink" title="3、自己写的宏"></a>3、自己写的宏</h3><p>（1）、自动注释，给这个宏定义一个快捷键，然后选中几行文本，执行快捷键，即可以进行注释与反注释操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">macro MultiLineComment()</span><br><span class="line">&#123;</span><br><span class="line">    hwnd = GetCurrentWnd()</span><br><span class="line">    selection = GetWndSel(hwnd)</span><br><span class="line">    LnFirst =GetWndSelLnFirst(hwnd)      //取首行行号</span><br><span class="line">    LnLast =GetWndSelLnLast(hwnd)      //取末行行号</span><br><span class="line">    hbuf = GetCurrentBuf()</span><br><span class="line">    if(GetBufLine(hbuf, 0) ==&quot;//magic-number:tph85666031&quot;)&#123;</span><br><span class="line">        stop</span><br><span class="line">    &#125;</span><br><span class="line">    Ln = Lnfirst</span><br><span class="line">    buf = GetBufLine(hbuf, Ln)</span><br><span class="line">    len = strlen(buf)</span><br><span class="line">    while(Ln &lt;= Lnlast) &#123;</span><br><span class="line">        buf = GetBufLine(hbuf, Ln)  //取Ln对应的行</span><br><span class="line">        if(buf ==&quot;&quot;)&#123;                   //跳过空行</span><br><span class="line">            Ln = Ln + 1</span><br><span class="line">            continue</span><br><span class="line">        &#125;</span><br><span class="line">        if(StrMid(buf, 0, 1) == &quot;/&quot;)&#123;       //需要取消注释,防止只有单字符的行</span><br><span class="line">            if(StrMid(buf, 1, 2) == &quot;/&quot;)&#123;</span><br><span class="line">                PutBufLine(hbuf, Ln, StrMid(buf, 2, Strlen(buf)))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(StrMid(buf,0,1) !=&quot;/&quot;)&#123;          //需要添加注释</span><br><span class="line">            PutBufLine(hbuf, Ln, Cat(&quot;//&quot;, buf))</span><br><span class="line">        &#125;</span><br><span class="line">        Ln = Ln + 1</span><br><span class="line">    &#125;</span><br><span class="line">    SetWndSel(hwnd, selection)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、菜单分配"><a href="#五、菜单分配" class="headerlink" title="五、菜单分配"></a>五、菜单分配</h3><p>菜单栏-选项-菜单分配，可以将自定义命令、宏等显示到菜单栏列表里。</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_13.png" alt></p>
+<h3 id="六、健分配"><a href="#六、健分配" class="headerlink" title="六、健分配"></a>六、健分配</h3><p>菜单栏-选项-键分配，定义快捷键，可以将自定义命令、宏等定义一个快捷键。</p>
+<h3 id="七、配置的保存和载入"><a href="#七、配置的保存和载入" class="headerlink" title="七、配置的保存和载入"></a>七、配置的保存和载入</h3><p>菜单栏-选项-载入配置或保存配置，可以把自己的配置保存下来，或者发给别人让别人使用。获取我的配置文件：<a href="http://pan.baidu.com/s/1pKViFHp。" target="_blank" rel="noopener">http://pan.baidu.com/s/1pKViFHp。</a></p>
+<h3 id="八、布局使用"><a href="#八、布局使用" class="headerlink" title="八、布局使用"></a>八、布局使用</h3><p>软件提供了四个布局的保存，当配置好一个界面布局后可保存到一个布局当中，这样可以方便切换软件布局。</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_14.png" alt></p>
+<h3 id="九、文件名标签设置为最近的使用靠左显示"><a href="#九、文件名标签设置为最近的使用靠左显示" class="headerlink" title="九、文件名标签设置为最近的使用靠左显示"></a>九、文件名标签设置为最近的使用靠左显示</h3><p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_16.png" alt></p>
+<h3 id="10、显示-去掉overview"><a href="#10、显示-去掉overview" class="headerlink" title="10、显示/去掉overview"></a>10、显示/去掉overview</h3><p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_17.png" alt><br>附：代码格式化，自己调整，本来想上传配置文件的，我看还是算了，自己调整吧</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_18.png" alt></p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_19.png" alt></p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_20.png" alt></p>
+<p>面是SI4.0版本官网的使用说明介绍网页。<br><a href="https://www.sourceinsight.com/doc/v4/userguide/index.html#t=Manual%2FFrontMatter%2FFrontMatter.html" target="_blank" rel="noopener">https://www.sourceinsight.com/doc/v4/userguide/index.html#t=Manual%2FFrontMatter%2FFrontMatter.html</a></p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_21.jpg" alt></p>
+<h2 id="附简易使用说明："><a href="#附简易使用说明：" class="headerlink" title="附简易使用说明："></a>附简易使用说明：</h2><p>Source Insight导入源代码流程如下：</p>
+<p>1）打开Source Insight；</p>
+<p>2）选择Project-&gt;New Project，填写工程的名字，工程文件存放路径，点击OK后即创建Source Insight工程相关文件(相应目录会生成*.PR等工程文件)；</p>
+<p>3）不断Next，你会发现Add and Remove Project Files对话框，在左边列表中选择你的源代码所在的文件夹，然后点击Add Tree，将源代码中所有文件添加到新创建的Source Insight工程中(即添加到右边列表中)，添加完成后你可以关闭该对话框，点击Project-&gt;Rebuild Project,这时你的源代码中的所有源文件全部都同步到Source Inight工程中了，这时你就可以使用Source Insight阅读源代码了；<br>点击Project-&gt;New Project，就会出现以下界面</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_30.jpg" alt><br>再New project name里面写一个项目名字，然后点击Browse，选择到你那个项目的文件夹，此次以我的一个项目为例：</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_31.jpg" alt><br>点击确定，然后出现一直ok</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_32.jpg" alt><br>直到出现这个界面</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_33.jpg" alt></p>
+<p>然后点击Add Tree，出现这个界面</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_34.jpg" alt><br>点击确定，然后出现这个界面</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_35.jpg" alt></p>
+<p>，然后把这个界面关掉就加载了项目</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_36.jpg" alt><br>然后点击右边操作栏中，下面被选中这个按钮</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_37.jpg" alt><br>然后会弹出一个提示框，是否要将这些代码关联，确认，然后加载完就可以，此时出现的是所有识别的函数名的列表，然后点击第一个按钮，回到下面这个界面，显示的是文件代码</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_38.jpg" alt></p>
+<p>双击其中Main.cpp文件，出现这个界面</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_39.jpg" alt></p>
+<p>然后随便选择这个文件中一个函数，就可以在下面看到他的定义</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_40.jpg" alt></p>
+<p>下面查看这个函数的全部调用，右击这个函数，选择Lookup References</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_41.jpg" alt></p>
+<p>然后选择Search</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_42.jpg" alt></p>
+<p>如果有弹出下面的框，可以随便选择Replace还是Append</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_43.jpg" alt></p>
+<p>然后就出现下面的界面</p>
+<p><img src="https://img-blog.nos-eastchina1.126.net/blog/blog_source_44.jpg" alt></p>
+<p>来源：<a href="https://blog.csdn.net/biubiuibiu/article/details/78044232" target="_blank" rel="noopener">https://blog.csdn.net/biubiuibiu/article/details/78044232</a><br><a href="https://www.jianshu.com/p/adca6c2f94f6" target="_blank" rel="noopener">https://www.jianshu.com/p/adca6c2f94f6</a><br><a href="https://blog.csdn.net/qq_39660930/article/details/77499455" target="_blank" rel="noopener">https://blog.csdn.net/qq_39660930/article/details/77499455</a><br><a href="https://baijiahao.baidu.com/s?id=1608656406591755295&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1608656406591755295&amp;wfr=spider&amp;for=pc</a><br><a href="https://zhuanlan.zhihu.com/p/32754019" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32754019</a><br><a href="https://www.sourceinsight.com/doc/v4/userguide/index.html#t=Manual%2FFrontMatter%2FFrontMatter.htm" target="_blank" rel="noopener">https://www.sourceinsight.com/doc/v4/userguide/index.html#t=Manual%2FFrontMatter%2FFrontMatter.htm</a><br><a href="https://zhuanlan.zhihu.com/p/36543793" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/36543793</a></p>
+<hr>
+<h3 id="我的个人博客主页，欢迎访问"><a href="#我的个人博客主页，欢迎访问" class="headerlink" title="我的个人博客主页，欢迎访问"></a><a href="http://www.aomanhao.top/" target="_blank" rel="noopener">我的个人博客主页，欢迎访问</a></h3><h3 id="我的CSDN主页，欢迎访问"><a href="#我的CSDN主页，欢迎访问" class="headerlink" title="我的CSDN主页，欢迎访问"></a><a href="https://blog.csdn.net/Aoman_Hao" target="_blank" rel="noopener">我的CSDN主页，欢迎访问</a></h3><h3 id="我的GitHub主页，欢迎访问"><a href="#我的GitHub主页，欢迎访问" class="headerlink" title="我的GitHub主页，欢迎访问"></a><a href="https://github.com/AomanHao" target="_blank" rel="noopener">我的GitHub主页，欢迎访问</a></h3>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Jason Wang</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://www.jasonwang.com.cn/2019/10/21/SouceInsight4/" title="Source Insight 4.0 破解和使用">http://www.jasonwang.com.cn/2019/10/21/SouceInsight4/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          
+            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/20/theme_NextConfig2/" rel="next" title="Hexo主题Next配置（二）">
+                <i class="fa fa-chevron-left"></i> Hexo主题Next配置（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://s2.ax1x.com/2019/09/07/n1Qczd.jpg" alt="Jason Wang">
+            
+              <p class="site-author-name" itemprop="name">Jason Wang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/1269887261" title="GitHub &rarr; https://github.com/1269887261" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:asdf-789@163.com" title="NetEase &rarr; mailto:asdf-789@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>NetEase</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:jasonwangofzj@gmail.com" title="GMail &rarr; mailto:jasonwangofzj@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>GMail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/JasonWangOfZJ" title="Twitter &rarr; https://twitter.com/JasonWangOfZJ" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Source-Insight-4-0-破解安装"><span class="nav-number">1.</span> <span class="nav-text">Source Insight 4.0 破解安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装卸载附录："><span class="nav-number">2.</span> <span class="nav-text">安装卸载附录：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、清除注册表信息："><span class="nav-number">2.1.</span> <span class="nav-text">1、清除注册表信息：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、删除全局配置信息："><span class="nav-number">2.2.</span> <span class="nav-text">2、删除全局配置信息：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建工程"><span class="nav-number">2.3.</span> <span class="nav-text">创建工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入项目"><span class="nav-number">2.4.</span> <span class="nav-text">导入项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建一个项目"><span class="nav-number">2.5.</span> <span class="nav-text">新建一个项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加和删除项目文件"><span class="nav-number">2.6.</span> <span class="nav-text">添加和删除项目文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步文件-SynchronizeFile"><span class="nav-number">2.7.</span> <span class="nav-text">同步文件 SynchronizeFile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目报告"><span class="nav-number">2.8.</span> <span class="nav-text">项目报告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重建项目"><span class="nav-number">2.9.</span> <span class="nav-text">重建项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择代码工程目录"><span class="nav-number">3.</span> <span class="nav-text">选择代码工程目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解析代码"><span class="nav-number">3.1.</span> <span class="nav-text">解析代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加和删除解析文件"><span class="nav-number">3.2.</span> <span class="nav-text">添加和删除解析文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SourceInsight-的窗口设置"><span class="nav-number">3.3.</span> <span class="nav-text">SourceInsight 的窗口设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用技巧"><span class="nav-number">3.4.</span> <span class="nav-text">使用技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-Insight4-0软件打开C程序中文注释乱码的解决方法"><span class="nav-number">3.5.</span> <span class="nav-text">Source Insight4.0软件打开C程序中文注释乱码的解决方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高亮显示选中的单词"><span class="nav-number">3.6.</span> <span class="nav-text">高亮显示选中的单词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口字体大小与样式设置步骤："><span class="nav-number">3.7.</span> <span class="nav-text">窗口字体大小与样式设置步骤：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、文档窗口"><span class="nav-number">3.8.</span> <span class="nav-text">1、文档窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、符号窗口"><span class="nav-number">3.9.</span> <span class="nav-text">2、符号窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、项目窗口"><span class="nav-number">3.10.</span> <span class="nav-text">3、项目窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、关联窗口"><span class="nav-number">3.11.</span> <span class="nav-text">4、关联窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、上下文窗口"><span class="nav-number">3.12.</span> <span class="nav-text">5、上下文窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、剪辑窗口"><span class="nav-number">3.13.</span> <span class="nav-text">6、剪辑窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、代码片段窗口"><span class="nav-number">3.14.</span> <span class="nav-text">7、代码片段窗口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、自定义命令"><span class="nav-number">4.</span> <span class="nav-text">三、自定义命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、宏的使用"><span class="nav-number">5.</span> <span class="nav-text">四、宏的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3、自己写的宏"><span class="nav-number">5.1.</span> <span class="nav-text">3、自己写的宏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、菜单分配"><span class="nav-number">5.2.</span> <span class="nav-text">五、菜单分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、健分配"><span class="nav-number">5.3.</span> <span class="nav-text">六、健分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、配置的保存和载入"><span class="nav-number">5.4.</span> <span class="nav-text">七、配置的保存和载入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、布局使用"><span class="nav-number">5.5.</span> <span class="nav-text">八、布局使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、文件名标签设置为最近的使用靠左显示"><span class="nav-number">5.6.</span> <span class="nav-text">九、文件名标签设置为最近的使用靠左显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、显示-去掉overview"><span class="nav-number">5.7.</span> <span class="nav-text">10、显示/去掉overview</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附简易使用说明："><span class="nav-number">6.</span> <span class="nav-text">附简易使用说明：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#我的个人博客主页，欢迎访问"><span class="nav-number">6.1.</span> <span class="nav-text">我的个人博客主页，欢迎访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我的CSDN主页，欢迎访问"><span class="nav-number">6.2.</span> <span class="nav-text">我的CSDN主页，欢迎访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我的GitHub主页，欢迎访问"><span class="nav-number">6.3.</span> <span class="nav-text">我的GitHub主页，欢迎访问</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+          <h3 class="widget-title"></h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="200" height="200" id="resCanvas" style="width=100%">
+                  <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/">GitHub</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Next/">Next</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iPhone/">iPhone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/reddit/">reddit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/规范/">规范</a><span class="tag-list-count">1</span></li></ul>
+              </canvas>
+          </div>
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Wang</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">56k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:42</span>
+</div>
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("1/1/2019 12:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = " 网站已运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+<br>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1278007563'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1278007563%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+<br>
+由<a href="https://www.upyun.com"><img src="https://s2.ax1x.com/2019/10/28/KgJHJS.png" style="width:60px;"></a>提供加速
+        
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+  
+  
+  <script id="ribbon" size="300" alpha="0.2" zindex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+  
+
+<script src="//cdn.jsdelivr.net/npm/valine@1.3.4/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: true,
+    appId: 'Xl5Wye4zCC2kd08uqR145Qog-gzGzoHsz',
+    appKey: 'rX61J8xk02IruEmudcaz0RlG',
+    placeholder: '欢迎交流讨论...',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
+
+<!--单击显示文字-->
+<script type="text/javascript" src="/js/click_show_text.js"></script>
